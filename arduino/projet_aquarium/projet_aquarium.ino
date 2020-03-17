@@ -11,7 +11,7 @@ DS3231 rtc(SDA, SCL); // déclaration de l'horloge
 Time time; ; // déclaration d'un objet Time
 
 int nourriture = 1; // nombre de poissons à nourrir
-int temperature = 20; // température de l'eau idéale
+int temperature = 21; // température de l'eau idéale
 int eclairage = 2; // éclairage -> 0: ON | 1: OFF | 2: Auto
 
 void setup() {
