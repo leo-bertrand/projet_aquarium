@@ -1,0 +1,8 @@
+Librairie utilisé pour l'exemple 
+
+https://github.com/rodan/ds3231
+
+Autre librairie dispo
+
+https://github.com/jarzebski/Arduino-DS3231
+
