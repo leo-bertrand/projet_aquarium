@@ -32,15 +32,70 @@ void setup() {
 }
  
 void loop() {
+  ecouter_commandes();
+
   time = rtc.getTime(); // récupération de l'heure de l'horloge
-  
-  // afficher infos  
-  
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print(time.date);
+  lcd.print("/");
+  lcd.print(time.mon);
+  lcd.print("/");
+  lcd.print(time.year);
+  lcd.setCursor(0, 1);
+  lcd.print(time.hour);
+  lcd.print(":");
+  lcd.print(time.min);
+  lcd.print(":");
+  lcd.print(time.sec);
+  delay(1500);
+
+  ecouter_commandes();
+
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Nourriture: ");
+  lcd.print(nourriture);
+  delay(1500);
+ 
+  ecouter_commandes();
+
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Temperature: ");
+  lcd.print(temperature);
+  lcd.print(" °C");
+  delay(1500);
+
+  ecouter_commandes();
+
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Eclairage: ");
+  lcd.print((eclairage == 0) ? "ON" : (eclairage == 1) ? "OFF" : "Auto");
+  delay(1000);
+}
+
+void distribuer_nourriture() {
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Distribution...");
+  while (true) {
+    // TODO: code de distribution de nourriture
+    if (digitalRead(pin_bouton_1) == HIGH) {
+      break;
+    }
+  } 
+}
+
+void ecouter_commandes() {
+  if (digitalRead(pin_bouton_1) == LOW) {
+    distribuer_nourriture();
+  }
+
   if (digitalRead(pin_bouton_2) == LOW) {
     choisir_action_menu_principal();
   }
-
-  delay(100);  
 }
 
 void choisir_action_menu_principal() {
@@ -72,12 +127,15 @@ void choisir_action_menu_principal() {
     if (digitalRead(pin_bouton_2) == LOW) {
       if (valeur_potentiometre < 333) {
         choisir_nourriture();
+        delay(1000);
       }
       else if (valeur_potentiometre < 666) {
         choisir_temperature();
+        delay(1000);
       }
       else {
         choisir_eclairage();
+        delay(1000);
       }
     }
     delay(100);
@@ -113,14 +171,17 @@ void choisir_nourriture() {
     if (digitalRead(pin_bouton_2) == LOW) {
       if (valeur_potentiometre < 333) {
         nourriture = 1;
+        delay(1000);
         return;
       }
       else if (valeur_potentiometre < 666) {
         nourriture = 2;
+        delay(1000);
         return;
       }
       else {
         nourriture = 3;
+        delay(1000);
         return;
       }
     }
@@ -169,30 +230,37 @@ void choisir_temperature() {
     if (valeur_potentiometre == LOW) {  
       if (valeur_potentiometre < 140) {
         temperature = 18;
+        delay(1000);
         return;
       }
       else if (valeur_potentiometre < 280) {
         temperature = 19;
+        delay(1000);
         return;
       }
       else if (valeur_potentiometre < 420) {
         temperature = 20;
+        delay(1000);
         return;
       }
       else if (valeur_potentiometre < 560) {
         temperature = 21;
+        delay(1000);
         return;
       }
       else if (valeur_potentiometre < 700) {
         temperature = 22;
+        delay(1000);
         return;
       }
       else if (valeur_potentiometre < 840) {
         temperature = 23;
+        delay(1000);
         return;
       }
       else {
         temperature = 24;
+        delay(1000);
         return;
       }
     }
@@ -229,14 +297,17 @@ void choisir_eclairage() {
     if (digitalRead(pin_bouton_2) == LOW) {
       if (valeur_potentiometre < 333) {
         eclairage = 0;
+        delay(1000);
         return;
       }
       else if (valeur_potentiometre < 666) {
         eclairage = 1;
+        delay(1000);
         return;
       }
       else {
         eclairage = 2;
+        delay(1000);
         return;
       }
     }
