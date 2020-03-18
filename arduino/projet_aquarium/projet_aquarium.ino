@@ -14,11 +14,7 @@ const int horaire_nourrissage_midi = 14; // à 14h
 const int horaire_nourrissage_soir = 20; // à 20h
 
 int nourriture = 1; // nombre de poissons à nourrir
-<<<<<<< HEAD
-int temperature_souhaite = 20; // température de l'eau idéale
-=======
 int temperature = 21; // température de l'eau idéale
->>>>>>> master
 int eclairage = 2; // éclairage -> 0: ON | 1: OFF | 2: Auto
 
 LiquidCrystal_I2C lcd(0x27,16,2); // déclaration de l'afficheur
